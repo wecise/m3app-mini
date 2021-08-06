@@ -2,9 +2,9 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h3>App List From M³</h3>
-    <ul>
-      <li :key="index" v-for="(app,index) in appList">
-          <a href="https://router.vuejs.org" target="_blank" rel="noopener">{{ app.cnname }}</a>
+    <ul style="display:flex;flex-wrap:wrap;">
+      <li :key="index" v-for="(app,index) in appList" style="margin:5px;">
+          <el-button type="default">{{ app.cnname }}</el-button>
       </li>
     </ul>
   </div>
@@ -26,9 +26,14 @@ export default {
   },
   methods:{
     callAppList(){
-      this.m3.callFS("/matrix/apps/appList.js",null).then(res=>{
+      this.m3.callFS("/matrix/m3app-mini/appList.js",null).then(res=>{
         this.appList = res.message.list;
       })
+      /* let param = encodeURIComponent( JSON.stringify({action:'r',param:null}) );
+      this.m3.callFS("/chenq/userApi.js",param).then(res=>{
+        console.log(res);
+        this.appList = res.message.data;
+      }) */
     }
   }
 }

@@ -4,8 +4,6 @@ import './plugins/element.js'
 
 const m3 = require("@wecise/m3js");
 Vue.prototype.m3 = m3;
-window.m3 = m3;
-
 
 let init = function(){
   new Vue({
